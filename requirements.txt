@@ -1,2 +1,1 @@
-mattermostdriver
 -r ./plugins/requirements.txt
