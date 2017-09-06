@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 BACKEND = 'Mattermost'
 
-BOT_EXTRA_STORAGE_PLUGINS_DIR = os.path.join(BASE_DIR, 'plugins', 'err-mattermost-backend')
+BOT_EXTRA_STORAGE_PLUGINS_DIR = os.path.join(BASE_DIR, 'plugins', 'errbot-mattermost-backend')
 
 print(BOT_EXTRA_STORAGE_PLUGINS_DIR)
 
