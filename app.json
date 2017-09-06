@@ -1,0 +1,22 @@
+{
+  "name": "Errbot",
+  "description": "An instance of Errbot",
+  "repository": "https://github.com/errbotio/errbot",
+  "logo": "https://errbot.readthedocs.org/en/latest/_static/errbot.png",
+  "keywords": ["python", "errbot"],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "login": {
+      "description": "The mattermost login",
+      "required": "true"
+    },
+    "password": {
+      "description": "The password for mattermost",
+      "required": "true"
+    }
+  }
+}
