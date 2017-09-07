@@ -10,13 +10,7 @@
     }
   ],
   "env": {
-    "login": {
-      "description": "The mattermost login",
+    "bot_token": {
+      "description": "The slack bot token",
       "required": "true"
-    },
-    "password": {
-      "description": "The password for mattermost",
-      "required": "true"
-    }
-  }
 }
