@@ -13,4 +13,5 @@
     "bot_token": {
       "description": "The slack bot token",
       "required": "true"
+    }
 }
