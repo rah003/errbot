@@ -14,7 +14,7 @@ BOT_IDENTITY = {
         'login': login,
         'password': password,
         'team': 'Geeked Out',
-        'server': 'chat.geekedoutsolutions.com',
+        'server': 'chat.mycroft.ai',
         # Optional
         'insecure': True, # Default = False. Set to true for self signed certificates
         'scheme': 'https', # Default = https
