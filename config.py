@@ -3,24 +3,17 @@ import os
 
 BASE_DIR = '/app'
 
-BACKEND = 'Mattermost'
+BACKEND = 'Slack'
 BOT_EXTRA_BACKEND_DIR = '/app/plugins/errbot-mattermost-backend'
 
-login = os.getenv('login')
-password = os.getenv('password')
+bot_token = os.getenv('bot_token')
+
 
 BOT_IDENTITY = {
-        # Required
-        'login': login,
-        'password': password,
-        'team': 'Geeked Out',
-        'server': 'chat.mycroft.ai',
-        # Optional
-        'insecure': False, # Default = False. Set to true for self signed certificates
-        'scheme': 'https', # Default = https
-        'port': 8065, # Default = 8065
-        'timeout': 30 # Default = 30. If the webserver disconnects idle connections later/earlier change this value
+    'token': bot_token
 }
+
+CHATROOM_PRESENCE = ()
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
