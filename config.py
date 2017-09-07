@@ -5,6 +5,7 @@ BASE_DIR = '/app'
 
 BACKEND = 'Slack'
 BOT_EXTRA_BACKEND_DIR = '/app/plugins/errbot-mattermost-backend'
+BOT_EXTRA_PLUGIN_DIR = '/app/plugins'
 
 bot_token = os.getenv('bot_token')
 
