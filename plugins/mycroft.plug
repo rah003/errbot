@@ -1,0 +1,10 @@
+[Core]
+name = mycroft
+module = mycroft
+
+[Documentation]
+description = ask questions about mycroft and interact with a mycroft instance
+
+[Python]
+version = 3
+
