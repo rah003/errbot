@@ -1,4 +1,4 @@
-from errbot import BotPlugin, botcmd, arg_botcmd, webhook
+from errbot import BotPlugin, botcmd, arg_botcmd, webhook, re_botcmd
 import re
 
 class Mycroft(BotPlugin):
