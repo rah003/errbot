@@ -16,7 +16,7 @@ BOT_IDENTITY = {
         'team': 'Geeked Out',
         'server': 'chat.mycroft.ai',
         # Optional
-        'insecure': True, # Default = False. Set to true for self signed certificates
+        'insecure': False, # Default = False. Set to true for self signed certificates
         'scheme': 'https', # Default = https
         'port': 8065, # Default = 8065
         'timeout': 30 # Default = 30. If the webserver disconnects idle connections later/earlier change this value
