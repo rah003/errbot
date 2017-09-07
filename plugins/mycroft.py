@@ -6,11 +6,6 @@ class Mycroft(BotPlugin):
     ask questions about mycroft and interact with a mycroft instance
     """
 
-    @webhook
-    def example_webhook(self, incoming_request):
-        """A webhook which simply returns 'Example'"""
-        return "Example"
-
     # Passing split_args_with=None will cause arguments to be split on any kind
     # of whitespace, just like Python's split() does
     @re_botcmd(pattern=r"doc.*mycroft|mycroft.*doc.*", prefixed=False, flags=re.IGNORECASE)
