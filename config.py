@@ -44,7 +44,12 @@ print(BOT_EXTRA_PLUGIN_DIR)
 
 # The location of the log file. If you set this to None, then logging will
 # happen to console only.
-BOT_LOG_FILE = None
+BOT_LOG_FILE = '/tmp/log/err.log'
+BOT_LOG_LEVEL = logging.DEBUG
+BOT_LOG_SENTRY = False
+SENTRY_DSN = ''
+SENTRY_LOGLEVEL = BOT_LOG_LEVEL
+BOT_ASYNC = True
 
 # The verbosity level of logging that is done to the above logfile, and to
 # the console. This takes the standard Python logging levels, DEBUG, INFO,
@@ -53,7 +58,6 @@ BOT_LOG_FILE = None
 # If you encounter any issues with Err, please set your log level to
 # logging.DEBUG and attach a log with your bug report to aid the developers
 # in debugging the issue.
-BOT_LOG_LEVEL = logging.DEBUG
 
 
 ##########################################################################
@@ -66,5 +70,5 @@ BOT_LOG_LEVEL = logging.DEBUG
 #
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
-BOT_ADMINS = ('@yan')
-BOT_ALT_PREFIXES = ('@maggot','@errbot')
+BOT_ADMINS = ('@yan',)
+BOT_ALT_PREFIXES = ('@maggot','@errbot',)
