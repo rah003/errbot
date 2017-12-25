@@ -49,7 +49,7 @@ BOT_LOG_FILE = None
 # If you encounter any issues with Err, please set your log level to
 # logging.DEBUG and attach a log with your bug report to aid the developers
 # in debugging the issue.
-BOT_LOG_LEVEL = logging.INFO
+BOT_LOG_LEVEL = logging.DEBUG
 
 
 ##########################################################################
@@ -63,4 +63,4 @@ BOT_LOG_LEVEL = logging.INFO
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
 BOT_ADMINS = ('@yan')
-BOT_ALT_PREFIXES = ('@maggot','maggot','@errbot','errbot')
+BOT_ALT_PREFIXES = ('@maggot','@errbot')
