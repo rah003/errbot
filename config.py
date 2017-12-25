@@ -72,6 +72,6 @@ BOT_ASYNC = True
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
 BOT_ADMINS = ('@yan',)
-BOT_ALT_PREFIXES = ('@maggot','@errbot',)
+BOT_ALT_PREFIXES = ('@wwys','@maggot','@errbot',)
 
 CHATROOM_FN = bot_nick
