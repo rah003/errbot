@@ -6,10 +6,14 @@ BASE_DIR = '/app'
 BACKEND = 'hipchat'
 
 bot_token = os.getenv('bot_token')
+bot_id = os.getenv('bot_id')
+bot_pswd = os.getenv('bot_pswd')
 
 
 BOT_IDENTITY = {
-    'token': bot_token
+    'username' : bot_token
+    'password' : bot_pswd
+    'token' : bot_token
 }
 
 CHATROOM_PRESENCE = ('jan-test')
