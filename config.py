@@ -72,3 +72,5 @@ BOT_ASYNC = True
 # would be considered an admin if setting '*@localhost'.
 BOT_ADMINS = ('@yan',)
 BOT_ALT_PREFIXES = ('@maggot','@errbot',)
+
+CHATROOM_FN = '@wwys'
