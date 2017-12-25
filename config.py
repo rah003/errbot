@@ -8,6 +8,7 @@ BACKEND = 'hipchat'
 bot_token = os.getenv('bot_token')
 bot_id = os.getenv('bot_id')
 bot_pswd = os.getenv('bot_pswd')
+bot_nick = os.getenv('bot_nick')
 
 
 BOT_IDENTITY = {
@@ -73,4 +74,4 @@ BOT_ASYNC = True
 BOT_ADMINS = ('@yan',)
 BOT_ALT_PREFIXES = ('@maggot','@errbot',)
 
-CHATROOM_FN = '@wwys'
+CHATROOM_FN = bot_nick
