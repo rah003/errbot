@@ -3,7 +3,7 @@ import os
 
 BASE_DIR = '/app'
 
-BACKEND = 'HipChat'
+BACKEND = 'Hipchat'
 
 bot_token = os.getenv('bot_token')
 
@@ -12,7 +12,7 @@ BOT_IDENTITY = {
     'token': bot_token
 }
 
-CHATROOM_PRESENCE = ()
+CHATROOM_PRESENCE = ('jan-test')
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
@@ -64,5 +64,3 @@ BOT_LOG_LEVEL = logging.INFO
 # would be considered an admin if setting '*@localhost'.
 BOT_ADMINS = ('@yan')
 BOT_ALT_PREFIXES = ('@maggot','maggot','@errbot','errbot')
-
-CHATROOM_PRESENCE = ('jan-test')
