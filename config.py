@@ -11,9 +11,9 @@ bot_pswd = os.getenv('bot_pswd')
 
 
 BOT_IDENTITY = {
-    'username' : bot_token
-    'password' : bot_pswd
-    'token' : bot_token
+    'username' : bot_token,
+    'password' : bot_pswd,
+    'token' : bot_token,
 }
 
 CHATROOM_PRESENCE = ('jan-test')
