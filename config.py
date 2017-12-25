@@ -3,7 +3,7 @@ import os
 
 BASE_DIR = '/app'
 
-BACKEND = 'Hipchat'
+BACKEND = 'hipchat'
 
 bot_token = os.getenv('bot_token')
 
