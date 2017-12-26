@@ -23,7 +23,7 @@ BOT_IDENTITY = {
 
 CHATROOM_FN = bot_nick
 
-CHATROOM_PRESENCE = bot_presence
+CHATROOM_PRESENCE = (bot_presence,)
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
@@ -78,8 +78,8 @@ BOT_ASYNC = True
 #
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
-BOT_ADMINS = bot_admins
-BOT_ADMINS_NOTIFICATIONS = bot_admins
+BOT_ADMINS = (bot_admins,)
+BOT_ADMINS_NOTIFICATIONS = (bot_admins,)
 
 BOT_ALT_PREFIXES = ('@wwys','@maggot','@errbot',)
 
