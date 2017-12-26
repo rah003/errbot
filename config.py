@@ -1,6 +1,6 @@
 import logging
 
-BASE_DIR = '/app'
+BASE_DIR = '~'
 
 BACKEND = 'Hipchat'
 
