@@ -28,6 +28,7 @@ CHATROOM_PRESENCE = bot_presence
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
 BOT_DATA_DIR = '/tmp/data'
+os.mkdir(BOT_DATA_DIR)
 
 ### Repos and plugins config.
 
