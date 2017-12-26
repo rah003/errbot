@@ -1,27 +1,32 @@
 import logging
-import os
 
 BASE_DIR = '/app'
 
-BACKEND = 'hipchat'
+BACKEND = 'Hipchat'
 
 bot_token = os.getenv('bot_token')
 bot_id = os.getenv('bot_id')
 bot_pswd = os.getenv('bot_pswd')
 bot_nick = os.getenv('bot_nick')
+bot_endpoint = os.getenv('bot_endpoint')
+bot_admins =  os.getenv('bot_admins')
+bot_presence =  os.getenv('bot_presence')
 
 
 BOT_IDENTITY = {
-    'username' : bot_token,
+    'username' : bot_id,
     'password' : bot_pswd,
-    # 'token' : bot_token,
+    'token' : bot_token,
+    'endpoint': bot_endpoint,
 }
 
-CHATROOM_PRESENCE = ('jan-test')
+CHATROOM_FN = bot_nick
+
+CHATROOM_PRESENCE = bot_presence
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
-BOT_DATA_DIR = '/tmp'
+BOT_DATA_DIR = BASE_DIR + '/data'
 
 ### Repos and plugins config.
 
@@ -40,12 +45,12 @@ BOT_DATA_DIR = '/tmp'
 # locally before publishing it. Note that you can specify only a single
 # directory, however you are free to create subdirectories with multiple
 # plugins inside this directory.
-BOT_EXTRA_PLUGIN_DIR = "/app/plugins"
+BOT_EXTRA_PLUGIN_DIR = BASE_DIR + "/plugins"
 print(BOT_EXTRA_PLUGIN_DIR)
 
 # The location of the log file. If you set this to None, then logging will
 # happen to console only.
-BOT_LOG_FILE = '/tmp/log/err.log'
+BOT_LOG_FILE = BOT_DATA_DIR + '/err.log'
 BOT_LOG_LEVEL = logging.DEBUG
 BOT_LOG_SENTRY = False
 SENTRY_DSN = ''
@@ -71,7 +76,12 @@ BOT_ASYNC = True
 #
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
-BOT_ADMINS = ('@yan',)
+BOT_ADMINS = bot_admins
+BOT_ADMINS_NOTIFICATIONS = bot_admins
+
 BOT_ALT_PREFIXES = ('@wwys','@maggot','@errbot',)
 
-CHATROOM_FN = bot_nick
+PLUGINS_CALLBACK_ORDER = (None, )
+XMPP_CA_CERT_FILE = None
+
+
