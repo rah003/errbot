@@ -12,7 +12,7 @@ class Example(BotPlugin):
         """
         test chaining commands
         """
-        return 'It *works* !'  # This string format is markdown.
+        return 'It *works* in chain!'  # This string format is markdown.
 
     @botcmd  # flags a command
     def tryme(self, msg, args):  # a command callable with !tryme
@@ -21,5 +21,5 @@ class Example(BotPlugin):
         Feel free to tweak me to experiment with Errbot.
         You can find me in your init directory in the subdirectory plugins.
         """
-        return trymetoo(self, msg, args)  # This string format is markdown.
+        return self.trymetoo(self, msg, args)  # This string format is markdown.
 
