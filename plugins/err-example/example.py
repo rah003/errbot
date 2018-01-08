@@ -21,5 +21,5 @@ class Example(BotPlugin):
         Feel free to tweak me to experiment with Errbot.
         You can find me in your init directory in the subdirectory plugins.
         """
-        return self.trymetoo(self, msg, args)  # This string format is markdown.
+        return self.trymetoo(msg, args)  # This string format is markdown.
 
