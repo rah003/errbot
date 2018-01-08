@@ -8,6 +8,12 @@ class Example(BotPlugin):
     You can find me in your init directory in the subdirectory plugins.
     """
 
+    def trymetoo(self, msg, args):  # a command callable with !tryme
+        """
+        test chaining commands
+        """
+        return 'It *works* !'  # This string format is markdown.
+
     @botcmd  # flags a command
     def tryme(self, msg, args):  # a command callable with !tryme
         """
@@ -15,4 +21,5 @@ class Example(BotPlugin):
         Feel free to tweak me to experiment with Errbot.
         You can find me in your init directory in the subdirectory plugins.
         """
-        return 'It *works* !'  # This string format is markdown.
+        return trymetoo(self, msg, args)  # This string format is markdown.
+
