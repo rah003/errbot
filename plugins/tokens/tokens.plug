@@ -1,6 +1,6 @@
 [Core]
 Name = Tokens
-Module = Tokens
+Module = tokens
 
 [Documentation]
 Description = Integration tokens plugin
