@@ -81,7 +81,7 @@ BOT_ASYNC = True
 BOT_ADMINS = (bot_admins,)
 BOT_ADMINS_NOTIFICATIONS = (bot_admins,)
 
-BOT_ALT_PREFIXES = ('@wwys','@maggot','@errbot',)
+BOT_ALT_PREFIXES = ('Err:', '@wwys','@maggot','@errbot',)
 
 PLUGINS_CALLBACK_ORDER = (None, )
 XMPP_CA_CERT_FILE = None
