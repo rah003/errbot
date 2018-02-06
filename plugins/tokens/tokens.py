@@ -23,7 +23,7 @@ class Tokens(BotPlugin):
         # find column holding values for branch of interest
         token_col = 0
         # listing 63 columns triggers OOME on heroku free dyno
-        for x in list(range(1, 50)):
+        for x in list(range(1, 10)):
             if wks.cell(1, x).value == which_token:
                 token_col = x
                 break
