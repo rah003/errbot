@@ -61,7 +61,7 @@ class Tokens(BotPlugin):
         return result
 
     @botcmd  # flags a command
-    def listtokens(self, msg, args):  # a command callable with !listtokens
+    def listtokens(self, args):  # a command callable with !listtokens
         """
         Execute to check who holds the token and how long is the queue.
         """
