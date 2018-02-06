@@ -46,9 +46,16 @@ class Tokens(BotPlugin):
             verb = 'are'
 
         if token_type == 'p':
-            result = str(results).strip('[]') + verb + ' holding a token for ' + which_token + ' at the moment'
+            result = str(results).strip('[]')+verb+' holding a token for '+which_token+' at the moment'
+            # print("res:"+result)
         else:
-            result = str(results).strip('[]') + verb + ' queued for a token for ' + which_token + ' at the moment'
+            # print("number of results:" + str(len(results)))
+            if len(results) == 0:
+                persons = 'none '
+            else:
+                persons = str(results).strip('[]')
+            result = persons+verb+' queued for a token for '+which_token+' at the moment'
+            # print(result)
 
         return result
 
@@ -69,17 +76,12 @@ class Tokens(BotPlugin):
         sheet = gc.open_by_url(url_prop)
         wks = sheet.worksheet('TOKEN_Q')
 
+        res = 'results:'
         if not args:
-            #empty list all
-            return self.token_status(wks, '5.4', 'q').join('  ').join(
-                self.token_status(wks, '5.4', 'p')).join('  ').join(
-                self.token_status(wks, '5.5', 'q')).join('  ').join(
-                self.token_status(wks, '5.5', 'p')).join('  ').join(
-                self.token_status(wks, '5.6', 'q')).join('  ').join(
-                self.token_status(wks, '5.6', 'p'))
+            # empty list of args, get all
+            return res + self.token_status(wks, '5.4', 'q')+'  '+self.token_status(wks, '5.4', 'p')+'  '+self.token_status(wks, '5.5', 'q')+'  '+self.token_status(wks, '5.5', 'p')+'  '+self.token_status(wks, '5.6', 'q')+'  '+self.token_status(wks, '5.6', 'p')
         else:
-            res = ''
             for x in args:
-                res.join(self.token_status(wks, x, 'q')).join('  ').join(self.token_status(wks, x, 'q'))
+                res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
         return res  # This string format is markdown.
 
