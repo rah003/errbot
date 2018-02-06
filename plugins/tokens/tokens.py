@@ -28,6 +28,9 @@ class Tokens(BotPlugin):
                 token_col = x
                 break
 
+        if (token_col == 0):
+            token_col = 4
+            
         # iterate through the values until we find someone who's processing => holding token right now
         values_list = wks.col_values(token_col)
 
@@ -61,7 +64,7 @@ class Tokens(BotPlugin):
         return result
 
     @botcmd  # flags a command
-    def listtokens(self, args):  # a command callable with !listtokens
+    def listtokens(self, msg, args):  # a command callable with !listtokens
         """
         Execute to check who holds the token and how long is the queue.
         """
