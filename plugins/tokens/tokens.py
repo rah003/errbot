@@ -60,7 +60,7 @@ class Tokens(BotPlugin):
             verb = 'are'
 
         if token_type == 'p':
-            result = '**'+str(results).strip('[]')+'**'+verb+' holds token'
+            result = '**'+str(results).strip('[]')+'** holds token'
             # print("res:"+result)
         else:
             # print("number of results:" + str(len(results)))
