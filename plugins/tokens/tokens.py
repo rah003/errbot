@@ -52,15 +52,19 @@ class Tokens(BotPlugin):
         for x in values_list:
             row_count = row_count + 1
             if x == token_type:
+                person = wks.cell(row_count, 2).value
                 # print('Where did we find the hit?' + str(row_count))
-                results.append(wks.cell(row_count, 2).value)
+                if not (person in results):
+                    results.append(person)
 
-        verb = 'is'
+        be = 'is'
+        hold = 'holds'
         if len(results) > 1:
-            verb = 'are'
+            be = 'are'
+            hold = 'hold'
 
         if token_type == 'p':
-            result = '**'+str(results).strip('[]')+'** holds token'
+            result = '**'+str(results).strip('[]')+'** '+hold+' token'
             # print("res:"+result)
         else:
             # print("number of results:" + str(len(results)))
@@ -68,7 +72,7 @@ class Tokens(BotPlugin):
                 persons = 'and no one'
             else:
                 persons = str(results).strip('[]')
-            result = '**' + persons + '** ' + verb + ' queued for one'
+            result = '**' + persons + '** ' + be + ' queued for one'
             # print(result)
 
         return result
