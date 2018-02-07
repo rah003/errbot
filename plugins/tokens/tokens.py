@@ -11,16 +11,12 @@ class Tokens(BotPlugin):
     This is a very basic plugin to try out listing of current ownership of tokens and queue for integration.
     """
 
-    @staticmethod
-    def token_status(wks, which_token, token_type):
-        """
-        Find tokens
-        :param wks: current workspace
-        :param which_token: to specific list version (5.4, 5.5, 5.6 ...)
-        :param token_type: to list queue (q) vs. current ownership of token (p)
-        :return: string with info about given version and token request type
-        """
-        # find column holding values for branch of interest
+    version_map = {}
+
+    def get_token_column(self, wks, which_token):
+        if (which_token in self.version_map):
+            return self.version_map[which_token]
+
         token_col = 0
         # listing 63 columns triggers OOME on heroku free dyno
         for x in list(range(1, 10)):
@@ -28,9 +24,23 @@ class Tokens(BotPlugin):
                 token_col = x
                 break
 
-        if (token_col == 0):
-            token_col = 4
-            
+        self.version_map[which_token] = token_col
+        
+        return token_col
+
+    def token_status(self, wks, which_token, token_type):
+        """
+        Find tokens
+        :param wks: current workspace
+        :param which_token: to specific list version (5.4, 5.5, 5.6 ...)
+        :param token_type: to list queue (q) vs. current ownership of token (p)
+        :param token_col: column holding info about specific list version (5.4, 5.5, 5.6 ...)
+        :return: string with info about given version and token request type
+        """
+
+        # find column holding values for branch of interest
+        token_col = self.get_token_column(wks, which_token)
+
         # iterate through the values until we find someone who's processing => holding token right now
         values_list = wks.col_values(token_col)
 
@@ -85,7 +95,7 @@ class Tokens(BotPlugin):
             # empty list of args, get all
             return res + self.token_status(wks, '5.4', 'q')+'  '+self.token_status(wks, '5.4', 'p')+'  '+self.token_status(wks, '5.5', 'q')+'  '+self.token_status(wks, '5.5', 'p')+'  '+self.token_status(wks, '5.6', 'q')+'  '+self.token_status(wks, '5.6', 'p')
         else:
-            for x in args:
+            for x in args.split():
                 res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
         return res  # This string format is markdown.
 
