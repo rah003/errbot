@@ -63,15 +63,17 @@ class Tokens(BotPlugin):
             be = 'are'
             hold = 'hold'
 
-            if len(results) == 0:
-                persons = 'and no one'
-            else:
-                persons = str(results).strip('[]')
+        if len(results) == 0:
+            persons = 'no one'
+        else:
+            persons = str(results).strip('[]')
 
         if token_type == 'p':
             result = '**'+persons+'** '+hold+' token'
             # print("res:"+result)
         else:
+            if len(results) == 0:
+                persons = 'and no one'
             # print("number of results:" + str(len(results)))
             result = '**' + persons + '** ' + be + ' queued for one'
             # print(result)
