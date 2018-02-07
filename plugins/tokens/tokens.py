@@ -25,7 +25,7 @@ class Tokens(BotPlugin):
                 break
 
         self.version_map[which_token] = token_col
-        
+
         return token_col
 
     def token_status(self, wks, which_token, token_type):
@@ -60,15 +60,15 @@ class Tokens(BotPlugin):
             verb = 'are'
 
         if token_type == 'p':
-            result = str(results).strip('[]')+verb+' holding a token for '+which_token+' at the moment'
+            result = '**'+str(results).strip('[]')+'**'+verb+' holds token'
             # print("res:"+result)
         else:
             # print("number of results:" + str(len(results)))
             if len(results) == 0:
-                persons = 'none '
+                persons = 'and no one'
             else:
                 persons = str(results).strip('[]')
-            result = persons+verb+' queued for a token for '+which_token+' at the moment'
+            result = '**' + persons + '** ' + verb + ' queued for one'
             # print(result)
 
         return result
@@ -90,7 +90,7 @@ class Tokens(BotPlugin):
         sheet = gc.open_by_url(url_prop)
         wks = sheet.worksheet('TOKEN_Q')
 
-        res = 'results:'
+        res = 'I think that '
         if not args:
             # empty list of args, get all
             return res + self.token_status(wks, '5.4', 'q')+'  '+self.token_status(wks, '5.4', 'p')+'  '+self.token_status(wks, '5.5', 'q')+'  '+self.token_status(wks, '5.5', 'p')+'  '+self.token_status(wks, '5.6', 'q')+'  '+self.token_status(wks, '5.6', 'p')
