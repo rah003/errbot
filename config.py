@@ -23,7 +23,8 @@ BOT_IDENTITY = {
 
 CHATROOM_FN = bot_nick
 
-CHATROOM_PRESENCE = (bot_presence,)
+CHATROOM_PRESENCE = bot_presence.split(",")
+#CHATROOM_PRESENCE = (bot_presence,)
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
