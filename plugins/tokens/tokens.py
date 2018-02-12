@@ -42,16 +42,16 @@ class Tokens(BotPlugin):
         token_col = self.get_token_column(wks, which_token)
 
         # iterate through the values until we find someone who's processing => holding token right now
-        values_list = wks.col_values(token_col)
+        token_column_values = wks.col_values(token_col)
 
         # total count
         # print('len:' + str(len(values_list)))
 
         row_count = 0
         results = []
-        for x in values_list:
+        for token_value in token_column_values:
             row_count = row_count + 1
-            if x == token_type:
+            if token_value == token_type:
                 person = wks.cell(row_count, 2).value
                 # print('Where did we find the hit?' + str(row_count))
                 if not (person in results):
@@ -100,7 +100,9 @@ class Tokens(BotPlugin):
         res = 'I think that '
         if not args:
             # empty list of args, get all
-            return res + self.token_status(wks, '5.4', 'q')+'  '+self.token_status(wks, '5.4', 'p')+'  '+self.token_status(wks, '5.5', 'q')+'  '+self.token_status(wks, '5.5', 'p')+'  '+self.token_status(wks, '5.6', 'q')+'  '+self.token_status(wks, '5.6', 'p')
+            return res + self.token_status(wks, '5.6', 'p')+' and '+self.token_status(wks, '5.6', 'q')+' also '\
+                   +self.token_status(wks, '5.5', 'p')+' and '+self.token_status(wks, '5.5', 'q')+' also '\
+                   +self.token_status(wks, '5.4', 'p')+' and '+self.token_status(wks, '5.4', 'q')
         else:
             for x in args.split():
                 res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
