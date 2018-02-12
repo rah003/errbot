@@ -86,7 +86,7 @@ class Tokens(BotPlugin):
         Execute to check who holds the token and how long is the queue.
         """
 
-        #read from system properties
+        # read from system properties
         url_prop = os.getenv('token_sheet_url')
         creds_json_prop = os.getenv('token_sheet_creds')
 
@@ -100,11 +100,9 @@ class Tokens(BotPlugin):
         res = 'I think that '
         if not args:
             # empty list of args, get all
-            return res + self.token_status(wks, '5.6', 'p')+' and '+self.token_status(wks, '5.6', 'q')+' also '\
-                   +self.token_status(wks, '5.5', 'p')+' and '+self.token_status(wks, '5.5', 'q')+' also '\
-                   +self.token_status(wks, '5.4', 'p')+' and '+self.token_status(wks, '5.4', 'q')
-        else:
-            for x in args.split():
-                res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
+            args = '5.6 5.5 5.4'
+
+        for x in args.split():
+            res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
         return res  # This string format is markdown.
 
