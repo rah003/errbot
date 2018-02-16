@@ -1,0 +1,9 @@
+[Core]
+Name = OOOfice
+Module = ooofice
+
+[Documentation]
+Description = OOO announcements plugin
+
+[Python]
+Version = 2+
