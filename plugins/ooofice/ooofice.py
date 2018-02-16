@@ -20,4 +20,16 @@ class OOOfice(BotPlugin):
                 mess.frm,
                 "Please be informed that Yan is on holidays until Feb 25th",
             )
+        if mess.body.find('yantest') != -1 and today < endday:
+            self.send(
+                mess.frm,
+                "gotcha",
+            )
 
+
+    @botcmd  # flags a command
+    def whosout(self, msg, args):  # a command callable with !whosout
+        """
+        Test
+        """
+        return "you"
