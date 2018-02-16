@@ -15,7 +15,7 @@ class OOOfice(BotPlugin):
     def callback_message(self, mess):
         endday = date(2018, 2, 25)
         today = date.today()
-        if mess.body.find('@yan') != -1 and today < endday:
+        if mess.body.lower().find('@yan') != -1 and today < endday:
             self.send(
                 mess.to,
                 "Please be informed that Yan is on holidays until Feb 25th",
