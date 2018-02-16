@@ -20,9 +20,9 @@ class OOOfice(BotPlugin):
                 mess.frm,
                 "Please be informed that Yan is on holidays until Feb 25th",
             )
-        if mess.body.find('yantest') != -1 and today < endday:
+        if mess.body.find('yantest') != -1:
             self.send(
-                mess.frm,
+                mess.to,
                 "gotcha",
             )
 
