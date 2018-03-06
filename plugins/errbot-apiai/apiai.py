@@ -1,17 +1,27 @@
 from errbot import BotPlugin, cmdfilter
 import json
-import apiai
 import os
+
+import argparse
+import uuid
+
+import dialogflow
+
 from datetime import datetime as dt
 
 class ApiAiPlugin(BotPlugin):
     def __init__(self, *args, **kwargs):
         super(ApiAiPlugin, self).__init__(*args, **kwargs)
-        self.apikey = os.getenv('api_io_apikey')
-        self.apiai = apiai.ApiAI(self.apikey)
+        #self.apikey = os.getenv('api_io_apikey')
+        #self.apiai = apiai.ApiAI(self.apikey)
+        self.projectid = os.getenv('api_io_projectid')
+        self.session_client = dialogflow.SessionsClient()
+        self.language_code = "en-US"
+
 
     @cmdfilter(catch_unprocessed=True)
     def apiai_filter(self, msg, cmd, args, dry_run, emptycmd=False):
+        """DialogFlow API Detect Intent Python sample with text inputs."""
         if not emptycmd:
             return msg, cmd, args
 
@@ -25,26 +35,41 @@ class ApiAiPlugin(BotPlugin):
         if not matched_prefix:
             return msg, cmd, args
 
-        request = self.apiai.text_request()
-        request.session_id = msg.frm.person[:36]
+        # identity of person we are talking to in order to have multiple simultaneous conversations
+        session_id = msg.frm.person[:36]
 
-        request.query = msg.body
+        session = self.session_client.session_path(self.project_id, session_id)
+        print('Session path: {}\n'.format(session))
 
+        clean_text = msg.body
         for prefix in prefixes:
-            if request.query.startswith(prefix):
-                request.query = request.query.replace(prefix, '', 1).strip()
+            if clean_text.startswith(prefix):
+                clean_text = clean_text.replace(prefix, '', 1).strip()
                 break
 
         separators = self._bot.bot_config.BOT_ALT_PREFIX_SEPARATORS
         for sep in separators:
-            if request.query.startswith(sep):
-                request.query = request.query.replace(sep, '', 1)
+            if clean_text.startswith(sep):
+                clean_text = clean_text.replace(sep, '', 1)
 
-        self.log.debug("API.ai was sent: {}".format(request.query))
+        self.log.debug("API.ai will be sent: {}".format(clean_text))
 
-        response = request.getresponse().read()
+        text_input = dialogflow.types.TextInput(
+            text=clean_text, language_code=self.language_code)
 
-        decoded_response = json.loads(response.decode('utf-8'))
+        query_input = dialogflow.types.QueryInput(text=text_input)
+
+        response = self.session_client.detect_intent(
+            session=session, query_input=query_input)
+
+        print('=' * 20)
+        print('Query text: {}'.format(response.query_result.query_text))
+        print('Detected intent: {} (confidence: {})\n'.format(
+            response.query_result.intent.display_name,
+            response.query_result.intent_detection_confidence))
+        decoded_response = response.query_result.fulfillment_text
+        print('Fulfillment text: {}\n'.format(
+            decoded_response))
 
         self.log.debug("API.ai returned: {}".format(decoded_response))
 
