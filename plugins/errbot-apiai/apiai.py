@@ -1,13 +1,13 @@
 from errbot import BotPlugin, cmdfilter
 import json
 import apiai
-import credentials
+import os
 from datetime import datetime as dt
 
 class ApiAiPlugin(BotPlugin):
     def __init__(self, *args, **kwargs):
         super(ApiAiPlugin, self).__init__(*args, **kwargs)
-        self.apikey = credentials.apikey
+        self.apikey = os.getenv('api_io_apikey')
         self.apiai = apiai.ApiAI(self.apikey)
 
     @cmdfilter(catch_unprocessed=True)
