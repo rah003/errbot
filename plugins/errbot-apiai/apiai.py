@@ -1,5 +1,7 @@
 from errbot import BotPlugin, cmdfilter
 import os
+import json
+from oauth2client.service_account import ServiceAccountCredentials
 
 import dialogflow
 
@@ -11,7 +13,17 @@ class ApiAiPlugin(BotPlugin):
         #self.apikey = os.getenv('api_io_apikey')
         #self.apiai = apiai.ApiAI(self.apikey)
         self.projectid = os.getenv('api_io_projectid')
-        self.session_client = dialogflow.SessionsClient()
+
+        # read from system properties
+        creds_json_prop = os.getenv('api_io_creds')
+
+        scope = [os.getenv('api_io_token_url')]
+
+
+        dictionary = json.loads(creds_json_prop, strict=False)
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(dictionary, scope)
+
+        self.session_client = dialogflow.SessionsClient(credentials=credentials)
         self.language_code = "en-US"
 
 
