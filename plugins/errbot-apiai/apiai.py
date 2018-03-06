@@ -1,9 +1,5 @@
 from errbot import BotPlugin, cmdfilter
-import json
 import os
-
-import argparse
-import uuid
 
 import dialogflow
 
