@@ -53,7 +53,8 @@ class Tokens(BotPlugin):
             row_count = row_count + 1
             if token_value == token_type:
                 person = wks.cell(row_count, 2).value
-                # print('Where did we find the hit?' + str(row_count))
+                reason = wks.cell(row_count, 3).value
+                # TODO: convert list of ppl results into list of person-reason tuples.
                 if not (person in results):
                     results.append(person)
 
@@ -97,11 +98,12 @@ class Tokens(BotPlugin):
         sheet = gc.open_by_url(url_prop)
         wks = sheet.worksheet('TOKEN_Q')
 
-        res = 'I think that '
         if not args:
             # empty list of args, get all
             args = '5.6 5.5 5.4'
 
+        res = 'I think that '
+        count = 0
         for x in args.split():
             res = res + self.token_status(wks, x, 'p')+' and '+self.token_status(wks, x, 'q')
         return res  # This string format is markdown.
