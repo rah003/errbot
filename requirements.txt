@@ -1,2 +1,2 @@
-errbot
+errbot==5.2.0
 -r ./plugins/requirements.txt
